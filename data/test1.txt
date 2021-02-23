@@ -1,1 +1,9 @@
-himparkchoiahimparkchoia[1, 2, 3, 4, 5, 6, 7]
+himparkchoiakim
+park
+choi
+name:hong
+age:25
+addr:서울
+name:hong
+age:25
+addr:서울
