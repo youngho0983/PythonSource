@@ -32,3 +32,5 @@ xpath :      /  : 루트부터
 
 
 
+- 확장자 : json , jl(jsonlines),csv,xml
+scrapy crawl 스파이더명 -o 저장할파일명.csv

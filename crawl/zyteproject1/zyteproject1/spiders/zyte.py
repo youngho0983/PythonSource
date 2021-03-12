@@ -13,3 +13,4 @@ class ZyteSpider(scrapy.Spider):
         # print("dir : {}".format(dir(response.url)))
         # print("status : {}".format(response.status))
         print(response.css("body::text").get())
+        

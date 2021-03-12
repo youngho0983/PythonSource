@@ -41,7 +41,13 @@ windows = driver.window_handles
 print(windows[0])
 print(windows[1])
 driver.switch_to_window(windows[1])
-driver.find_element_by_css_selector("#interest > span.ico.ico_interest").click()
+
+try:
+    driver.find_element_by_css_selector("#interest > on")
+except Exception:
+    driver.find_element_by_css_selector("#interest > span.ico.ico_interest").click()
+
+
 time.sleep(3)
 driver.find_element_by_css_selector("#wishFolder_101515623").click()
 
