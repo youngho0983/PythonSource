@@ -1,0 +1,36 @@
+scrapy startproject 프로젝트명
+scrapy genspider 스파이더명 크롤할 사이트 주소
+스파이더 수정
+scrapy crawl 스파이더명
+or
+scrapy runspider 스파이더파일명 (단위 테스트 개념)
+
+파씽  -> BeautifulSoup or   lxml  ,  cssselect , parsel
+
+
+
+scrapy 선택자  ==>css
+	       ==>xpath
+
+css : 요소::text    텍스트 값 가져오기    ,  
+      요소::attr(요소이름)   attr 속성 값 가져오기  
+     .get() , .getall()    :하나만 가져오기 , 다 가져오기.
+     response.css("title::text").get()
+     response.css("div > a ::attr(href)").getall() : div 태그 자식중 a 태그의 href 값 모두추출
+     response.css("title ::text").extract_first()
+     response.css("div> a::attr(href)").extract()
+
+xpath :      /  : 루트부터
+             // : 현재의 노드부터 문서상의 모든 노드 조회
+             .  : 현재의 노드
+             .. : 부모 노드
+	     @  : 속성 선택자. ex) response.xpath('/div').getall()
+				   response.xpath("//div[@id='myid']/a/text()").get()
+				   response.css("img").xpath('@src').getall()
+
+				
+
+
+
+- 확장자 : json , jl(jsonlines),csv,xml
+scrapy crawl 스파이더명 -o 저장할파일명.csv
