@@ -20,9 +20,9 @@ class Best1Spider(CrawlSpider):
     def parse_start_url(self, response):
         print(">>> parse_start_url", response.url)
 
-        yield scrapy.Request(
-            response.url, self.parse_item, meta={"main_cate": "ALL", "sub_cate": "ALL"}
-        )
+        # yield scrapy.Request(
+        #     response.url, self.parse_item, meta={"main_cate": "ALL", "sub_cate": "ALL"}
+        # )
 
     def parse_sub_category(self, response):
         print(">>> parse_sub_category", response.url)
@@ -46,7 +46,13 @@ class Best1Spider(CrawlSpider):
         for idx, sub_addr in enumerate(sub_cate_addr):
             sub_url = response.urljoin(sub_addr)
             sub_name = sub_cate_name[idx]
-            print("2차 카테고리", sub_url, sub_name)
+            # print("2차 카테고리", sub_url, sub_name)
+            yield scrapy.Request(
+                sub_url,
+                self.parse_item,
+                meta={"main_cate": main_cate, "sub_cate": sub_name},
+                dont_filter=True,
+            )
 
     def parse_item(self, response):
         # print(
